@@ -91,8 +91,14 @@ public class Main {
         Result resultApproach2 = TSPIncompletApproch2.tspIncompletSolution2(distMatrix, numCities, timeWindowsMatrix, timeMatrix);
         writeResult(csvWriter, "Incomplet 2", numCities, resultApproach2.path, resultApproach2.distance, resultApproach2.executionTime, category, 0, 0);
 
-        Result resultApproach3 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 20);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApproach3.path, resultApproach3.distance, resultApproach3.executionTime, category, 0, 20);
+        Result resultApp3_20 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 20);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_20.path, resultApp3_20.distance, resultApp3_20.executionTime, category, 0, 20);
+
+        Result resultApp3_100 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 100);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_100.path, resultApp3_100.distance, resultApp3_100.executionTime, category, 0, 100);
+
+        Result resultApp3_1000 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 1000);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_1000.path, resultApp3_1000.distance, resultApp3_1000.executionTime, category, 0, 1000);
 
     }
 
