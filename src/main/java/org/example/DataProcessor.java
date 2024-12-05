@@ -10,6 +10,8 @@ public class DataProcessor {
     private float[][] distMatrix;
     private int[][] timeWindowsMatrix;
 
+    public DataProcessor() {
+    }
     public DataProcessor(String filePath) throws IOException{
         processFile(filePath);
     }
