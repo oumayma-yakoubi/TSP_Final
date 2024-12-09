@@ -86,16 +86,16 @@ public class TSPIncompletApproch2 {
                 if (!allClosed){
                     // Si une ville devient disponible plus tard, avancer le temps à son ouverture
                     currentTime = Math.max(currentTime, nextAvailabilityTime);
-                    System.out.println("Avancement du temps au prochain créneau disponible : " + currentTime);
+                    //System.out.println("Avancement du temps au prochain créneau disponible : " + currentTime);
                 }else{
                     // Si toutes les villes sont fermées, réinitialiser
-                    System.out.println("Toutes les villes sont fermées ou inaccessibles pour cette journée.");
+                    //System.out.println("Toutes les villes sont fermées ou inaccessibles pour cette journée.");
                     currentTime = 0; // Réinitialiser pour le prochain jour
                 }
                 continue; // Recalculer les villes disponibles avec le temps mis à jour
             }
             if (nextCity == -1){ // Aucune ville n'est disponible.
-                System.out.println("Aucune ville atteignable à partir de la ville :" + currentCity);
+                //System.out.println("Aucune ville atteignable à partir de la ville :" + currentCity);
                 break;
             }
             //System.out.println("I'm in the city : " + nextCity );
@@ -116,15 +116,15 @@ public class TSPIncompletApproch2 {
         long execution_time = executionEndTime - executionStartTime;
 
 
-        System.out.println("Parcours : " + path);
-        System.out.println("Distance Totale : " + totalDistance);
+        //System.out.println("Parcours : " + path);
+        //System.out.println("Distance Totale : " + totalDistance);
 
         // Affichage structuré
-        System.out.println("Visites des villes :");
+        //System.out.println("Visites des villes :");
         for (int i = 0; i < path.size(); i++) {
             System.out.println("Ville " + path.get(i) + " --> " + visitTimes.get(i) + " unités de temps");
         }
-        System.out.println("Distance totale : " + totalDistance + "Km");
+        //System.out.println("Distance totale : " + totalDistance + "Km");
 
         return new Result(path, totalDistance, execution_time);
 

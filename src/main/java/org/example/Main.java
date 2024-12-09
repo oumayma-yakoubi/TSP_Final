@@ -91,14 +91,17 @@ public class Main {
         Result resultApproach2 = TSPIncompletApproch2.tspIncompletSolution2(distMatrix, numCities, timeWindowsMatrix, timeMatrix);
         writeResult(csvWriter, "Incomplet 2", numCities, resultApproach2.path, resultApproach2.distance, resultApproach2.executionTime, category, 0, 0);
 
-        Result resultApp3_20 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 20);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_20.path, resultApp3_20.distance, resultApp3_20.executionTime, category, 0, 20);
+        // Timeout = 10min
+        Result resultApp3_10 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 600000);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_10.path, resultApp3_10.distance, resultApp3_10.executionTime, category, 0, 600000);
 
-        Result resultApp3_100 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 100);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_100.path, resultApp3_100.distance, resultApp3_100.executionTime, category, 0, 100);
+        // Timeout = 35min
+        Result resultApp3_35 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 2100000);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_35.path, resultApp3_35.distance, resultApp3_35.executionTime, category, 0, 2100000);
 
-        Result resultApp3_1000 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 1000);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_1000.path, resultApp3_1000.distance, resultApp3_1000.executionTime, category, 0, 1000);
+        // Timeout = 60min
+        Result resultApp3_60 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 3600000);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_60.path, resultApp3_60.distance, resultApp3_60.executionTime, category, 0, 3600000);
 
     }
 

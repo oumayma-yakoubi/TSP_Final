@@ -69,10 +69,10 @@ public class TSPIncompletApproch3 {
                     if (!allClosed){
                         // Si une ville devient disponible plus tard, avancer le temps à son ouverture
                         currentTime = Math.max(currentTime, nextAvailabilityTime);
-                        System.out.println("Avancement du temps au prochain créneau disponible : " + currentTime);
+                        //System.out.println("Avancement du temps au prochain créneau disponible : " + currentTime);
                     }else{
                         // Si toutes les villes sont fermées, réinitialiser
-                        System.out.println("Toutes les villes sont fermées ou inaccessibles pour cette journée.");
+                        //System.out.println("Toutes les villes sont fermées ou inaccessibles pour cette journée.");
                         currentTime = 0; // Réinitialiser pour le prochain jour
                     }
                     continue; // Recalculer les villes disponibles avec le temps mis à jour
@@ -107,12 +107,12 @@ public class TSPIncompletApproch3 {
         }
 
         // Optionnel : Afficher tous les résultats après la fin du timeout
-        System.out.println("Tous les chemins parcourus pendant le timeout :");
-        for (Result result : allPaths) {
-            System.out.println("Chemin : " + result.path + " Distance totale : " + result.distance);
-        }
+//        System.out.println("Tous les chemins parcourus pendant le timeout :");
+//        for (Result result : allPaths) {
+//            System.out.println("Chemin : " + result.path + " Distance totale : " + result.distance);
+//        }
 
-        System.out.println("Meilleur chemin : " + bestResult.path + " avec une distance totale de : " + bestResult.distance);
+        //System.out.println("Meilleur chemin : " + bestResult.path + " avec une distance totale de : " + bestResult.distance);
         return new Result(bestResult.path, bestResult.distance, bestResult.executionTime);
 
     }
