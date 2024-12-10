@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,8 +16,8 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        String mainDirectory = "D:\\TSP_projet\\src\\Data";
-        String csvOutputFile = "D:\\TSP_projet\\results.csv";
+        String mainDirectory = "C:\\Users\\inesl\\Documents\\M2_IA\\G_C\\incomplete\\src\\Data";
+        String csvOutputFile = "C:\\Users\\inesl\\Documents\\M2_IA\\G_C\\incomplete\\src\\results.csv";
 
 
         //String filePath = "D:\\TSP_projet\\src\\Data\\large\\n101_instance1.txt";
@@ -39,13 +39,11 @@ public class Main {
             System.err.println("Erreur lors de l'écriture du fichier CSV");
             e.printStackTrace();
         }
-
-
     }
 
     private static void processFile(Path filePath, BufferedWriter csvWriter) throws IOException {
         String category = filePath.getParent().getFileName().toString();
-        System.out.println("categoryyy : " + category);
+        //System.out.println("categoryyy : " + category);
 
         DataProcessor dataProcessor = new DataProcessor(filePath.toString());
 
@@ -82,27 +80,22 @@ public class Main {
                 bestResultApp1_3 = currentResultApp1_3;
             }
         }
-        writeResult(csvWriter, "Incomplet 1", numCities, bestResultApp1_6.path, bestResultApp1_6.distance, bestResultApp1_6.executionTime, category, 0.6, 0);
-        writeResult(csvWriter, "Incomplet 1", numCities, bestResultApp1_3.path, bestResultApp1_3.distance, bestResultApp1_3.executionTime, category, 0.3, 0);
+       writeResult(csvWriter, "Incomplet 1", numCities, bestResultApp1_6.path, bestResultApp1_6.distance, bestResultApp1_6.executionTime, category, 0.6, 0);
+       writeResult(csvWriter, "Incomplet 1", numCities, bestResultApp1_3.path, bestResultApp1_3.distance, bestResultApp1_3.executionTime, category, 0.3, 0);
 
-        Result resultApp1_full_exploit = TSPIncompletApproch1.tspIncompletSolution1(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 1);
-        writeResult(csvWriter, "Incomplet 1", numCities, resultApp1_full_exploit.path, resultApp1_full_exploit.distance, resultApp1_full_exploit.executionTime, category, 1, 0);
+       Result resultApp1_full_exploit = TSPIncompletApproch1.tspIncompletSolution1(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 1);
+       writeResult(csvWriter, "Incomplet 1", numCities, resultApp1_full_exploit.path, resultApp1_full_exploit.distance, resultApp1_full_exploit.executionTime, category, 1, 0);
 
-        Result resultApproach2 = TSPIncompletApproch2.tspIncompletSolution2(distMatrix, numCities, timeWindowsMatrix, timeMatrix);
-        writeResult(csvWriter, "Incomplet 2", numCities, resultApproach2.path, resultApproach2.distance, resultApproach2.executionTime, category, 0, 0);
+       Result resultApproach2 = TSPIncompletApproch2.tspIncompletSolution2(distMatrix, numCities, timeWindowsMatrix, timeMatrix);
+       writeResult(csvWriter, "Incomplet 2", numCities, resultApproach2.path, resultApproach2.distance, resultApproach2.executionTime, category, 0, 0);
+ 
+       // Timeout = 5min
+       Result resultApp3_5 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 300000);
+       writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_5.path, resultApp3_5.distance, resultApp3_5.executionTime, category, 0, 300000);
 
-        // Timeout = 10min
-        Result resultApp3_10 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 600000);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_10.path, resultApp3_10.distance, resultApp3_10.executionTime, category, 0, 600000);
-
-        // Timeout = 35min
-        Result resultApp3_35 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 2100000);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_35.path, resultApp3_35.distance, resultApp3_35.executionTime, category, 0, 2100000);
-
-        // Timeout = 60min
-        Result resultApp3_60 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 3600000);
-        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_60.path, resultApp3_60.distance, resultApp3_60.executionTime, category, 0, 3600000);
-
+        // Timeout = 15min
+        Result resultApp3_15 = TSPIncompletApproch3.tspIncompletSolution3(distMatrix, numCities, timeWindowsMatrix, timeMatrix, 900000);
+        writeResult(csvWriter, "Incomplet 3", numCities, resultApp3_15.path, resultApp3_15.distance, resultApp3_15.executionTime, category, 0, 900000);
     }
 
     private static void writeResult(BufferedWriter csvWriter, String typeApproche, int numCities, List<Integer> chemin, float distance, float executionTime, String category, double pnoise, float timeout) throws IOException {

@@ -100,9 +100,8 @@ public class TSPIncompletApproch1 {
 
             currentCity = nextCity;
             totalDistance +=minDistance;
-
-
         }
+
         totalDistance += distMatrix[currentCity][path.get(0)];
 
         long executionEndTime = System.currentTimeMillis();
@@ -120,5 +119,4 @@ public class TSPIncompletApproch1 {
 
         return new Result(path, totalDistance, execution_time);
     }
-
 }

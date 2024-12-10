@@ -127,6 +127,5 @@ public class TSPIncompletApproch2 {
         //System.out.println("Distance totale : " + totalDistance + "Km");
 
         return new Result(path, totalDistance, execution_time);
-
     }
 }

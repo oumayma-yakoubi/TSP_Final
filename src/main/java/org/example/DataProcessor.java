@@ -45,5 +45,4 @@ public class DataProcessor {
     public int[][] getTimeWindowsMatrix() {
         return timeWindowsMatrix;
     }
-
 }

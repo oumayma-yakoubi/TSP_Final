@@ -15,7 +15,12 @@ public class TSPIncompletApproch3 {
         Result bestResult = null; // Variable pour stocker le meilleur chemin
 
         long executionStartTime = System.currentTimeMillis();
+        int nb_max_path=1;
 
+        for(int i=1;i<numCities;i++){
+            nb_max_path=nb_max_path*i;
+        }
+        nb_max_path = nb_max_path/2;
 
         while (System.currentTimeMillis() - startTime < timeoutMillis){
             // Initialisation de la ville de départ et des variables
@@ -99,10 +104,11 @@ public class TSPIncompletApproch3 {
 
             // Sauvegarder le chemin et la distance dans allPaths
             Result result = new Result(new ArrayList<>(path), totalDistance, execution_time);
-            allPaths.add(result);
-
-            if(bestResult == null || result.distance < bestResult.distance){
-                bestResult = result;
+            if(!allPaths.contains(result)){
+                allPaths.add(result);
+                if(bestResult == null || result.distance < bestResult.distance){
+                    bestResult = result;
+                }
             }
         }
 
@@ -114,6 +120,5 @@ public class TSPIncompletApproch3 {
 
         //System.out.println("Meilleur chemin : " + bestResult.path + " avec une distance totale de : " + bestResult.distance);
         return new Result(bestResult.path, bestResult.distance, bestResult.executionTime);
-
     }
 }
